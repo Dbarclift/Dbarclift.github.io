@@ -71,7 +71,7 @@ moosemouse.friend=friends;
 
 console.log(moosemouse.friend);
 
-function search(animalName){
+function search(animalName){// this is the search function
     for (var i = 0; i < animals.length; i++){
         if (animalName.toUpperCase() === animals[i].name.toUpperCase()){
             return animals[i];
@@ -79,12 +79,24 @@ function search(animalName){
     } return null;
 }
 
-
-
-function edit(animalName,animalName){
+function edit(animalName,object){//this is how we edit stuff
      for (var i = 0; i < animals.length; i++){
-        if (animalName.toUpperCase() === animals[i].name.toUpperCase()){
-            animalName.replace;
-        };
-     };
-};
+        if (animalName === animals[i].name){
+        animals[i] = object;
+        }
+     }
+}
+
+function remove(animalName){  // this is where we delete stuff
+     for (var i = 0; i < animals.length; i++){
+         if(animalName.toUpperCase() === animals[i].name.toUpperCase()){
+        animals.splice(i, 1);
+        }
+    }
+}
+
+function create(object){
+    var match = search(object.name);        
+    if (!match) 
+    animals.push(object);
+}
