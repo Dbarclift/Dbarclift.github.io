@@ -95,7 +95,7 @@ function remove(animalName){  // this is where we delete stuff
     }
 }
 
-function create(object){
+function create(object){ // this is where we create stuff
     var match = search(object.name);        
     if (!match) 
     animals.push(object);
