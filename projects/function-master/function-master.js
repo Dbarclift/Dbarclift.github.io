@@ -67,16 +67,46 @@ function profileInfo(obj){
        return capitalizeWord(obj.name) + " is a " + capitalizeWord(obj.species)
 }
 
-//Should take an object, if this object has a noises array return them as a string separated by a space, if there are no noises return 'there are no noises'"
+// Should take an object, 
+// if this object has a noises array return them as a string separated by a space, 
+// if there are no noises return 'there are no noises'"
 
 function maybeNoises(obj){
-    var out=[];
-    for(var i=0; i< out.length; i++)
-        return "there are no noises";
+    if (obj.noises && Array.isArray(obj.noises) && obj.noises.length){
+        return obj.noises.join(" ");
+    
+    }    return "there are no noises";
+ 
     
 }
 function arrayIncludes(array, element) {
     return (array.indexOf(element) > -1);
+}
+
+//"hasWord() : Should take a string of words
+// and a word and
+//return true if <word>
+//is in <string of words>
+
+function hasWord(string, word){
+ return string.indexOf(word) > -1;
+}
+
+//11 "addFriend() : Should take a name 
+//and an object 
+//and add the name to the object's friends array 
+//then return the object"
+
+function addFriend(name, obj){
+    obj.friends.push(name);
+    return obj;
+
+}
+//12 "isFriend() : Should take a name and an object
+//and return true if <name> is a friend of <object> and false otherwise"
+
+function isFriend(name, obj){
+    return (obj.friends !== undefined && obj.friends.indexOf(name)> - 1)
 }
 
 
@@ -103,6 +133,43 @@ function nonFriends(name, people){
     
         if(!arrayIncludes(friends, currentPerson.name)){
             out.push(currentPerson.name);
+        }
+    }
+    return out;
+}
+
+//14 "updateObject() : Should take an object, a key and a value.
+//Should update the property <key> on <object> with new <value>. 
+//If <key> does not exist on <object> create it."
+
+function updateObject(obj, key, val){
+    obj[key]=val;
+    return obj;
+}
+
+// 15 "removeProperties() : Should take an object and an array of strings.
+//Should remove any properties on <object> that are listed in <array>"
+
+function removeProperties(obj,strings){
+    for(var i=0; i< strings.length; i++){
+        var currentProp= strings[i];
+        if (obj[currentProp] !== undefined ){
+            delete obj[currentProp];
+        }
+    }
+    return obj
+}
+
+//16 "dedup() : Should take an array
+//and return an array
+//with all the duplicates removed"
+
+function dedup(array){
+    var out=[];
+    for (var i=0; i< array.length; i++){
+        var currentItem = array[i];
+        if (!(out.indexOf(currentItem) > -1)){
+        out.push(currentItem);
         }
     }
     return out;
