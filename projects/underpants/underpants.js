@@ -112,8 +112,14 @@ _.first = function first(array, number){
 */
 _.last = function last(array, number){
     if(!Array.isArray(array) ) return [];
-    if( number === undefined || number === false) return Array.lastIndexOf(array);
-    else return Array.lastIndexOf(number);
+    
+    if( _.typeOf(number)!== 'number'|| number == 1){
+        return array[array.length-1];
+    }
+    if (number > array.length-1)
+        return array.slice(0, array.length);
+    
+    return array.slice(array.length - number);
 };
 
 /** _.each()
